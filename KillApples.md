@@ -29,5 +29,20 @@ I also changed the background colour to cyan by editing the following:
 Next I changed the border colour from white to black by making the following changes:
 // set the border to white for clarity
       GLuint white = resource_dict::get_texture_handle(GL_RGB, "#111111");
+      
+      // up and down arrows
+	  if (is_key_down(key_up)) { 
+		  sprites[ship_sprite].translate(0, +ship_speed);
+	  if (sprites[ship_sprite].collides_with(sprites[first_border_sprite + 1])) { 
+		  sprites[ship_sprite].translate(0, -ship_speed);
+	    } 
+	  }
+	  else if (is_key_down(key_down)) {
+		  sprites[ship_sprite].translate(0, -ship_speed);
+		  if (sprites[ship_sprite].collides_with(sprites[first_border_sprite + 0])) {
+			  sprites[ship_sprite].translate(0, +ship_speed);
+		  }
+	  }
+	  
 Contact GitHub API Training Shop Blog About
 © 2016 GitHub, Inc. Terms Privacy Security Status Help
